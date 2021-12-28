@@ -1,0 +1,22 @@
+
+                <div class="card card-primary">            
+                    <div class="card-body">
+                        <form [formGroup]="photoForm" (ngSubmit)="doAction()">
+                            <div class="form-group">
+                                <label for="name">Set Photo As</label>
+                                <select class="form-control"  formControlName="category">
+                                    <option disabled selected>--Select--</option>
+                                    <option value="main">main</option>
+                                    <option value="other">other</option>
+                                </select>
+                                <div *ngIf="getControl.category.touched && getControl.category.invalid">
+                                <div class="invalid-feedback" *ngIf="hasError('category', 'required')">Required</div>
+                                  </div>
+                               </div>
+                            <div class="form-group text-center">
+                                <img *ngIf="IsWait" style="height: 50px;" class="text-center"  src="assets/img/loading.svg"/>
+                                <button  type="submit"  [disabled]="!photoForm.valid" class="btn btn-primary btn-lg btn-block">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>

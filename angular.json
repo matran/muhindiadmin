@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "11f20cd6-5e89-4b44-b2a0-6f21854ade6a"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -27,17 +30,22 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css",
+              "node_modules/izitoast/dist/css/iziToast.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "node_modules/izitoast/dist/js/iziToast.min.js"
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "3mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",

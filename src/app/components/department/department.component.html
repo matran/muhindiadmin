@@ -1,0 +1,50 @@
+
+
+
+<section class="section">  
+    <div class="section-header">
+      <div class="section-header-breadcrumb">
+          <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+          <div class="breadcrumb-item">department</div>
+      </div>
+  </div>
+  <div class="section-body">
+  <div class="card-body">
+ <div style="float: right; margin-bottom: 20px;"><button (click)=" openDepartmentModal('Add',{})"  class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>Add New</button></div>
+   <div>
+    
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngIf="departments?.length != 0">
+      <tr *ngFor="let department of departments">
+        <td>{{ department.id}}</td>
+        <td>{{ department.name}}</td>
+        <td><div class="dropstart"><button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton1"><i class="fas fa-ellipsis-v" aria-hidden="true"></i></button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <a style="cursor: pointer;" class="dropdown-item has-icon" type="button" (click)="openDeleteModal(department)" ><i class="fa fa-trash"></i>Delete</a>
+          <a style="cursor: pointer;" class="dropdown-item has-icon" type="button" (click)=" openDepartmentModal('Update',department)"><i class="far fa-edit"></i> Edit</a>
+        </div>
+      </div>
+      </td>
+      </tr>
+      <img *ngIf="IsWait" class="loading-p" src="assets/img/loading.svg"/>
+    </tbody>
+    <tbody *ngIf="departments?.length == 0">
+      <tr>
+        <td colspan="3" class="no-data-available">No data available</td>
+      </tr>
+    </tbody>
+
+  </table>
+  </div>
+  </div>
+  </div>
+  </section>
+  
+ 

@@ -1,0 +1,123 @@
+
+
+  
+  <div id="app">
+    <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
+        
+        <!-- Start app top navbar -->
+        <nav class="navbar navbar-expand-lg main-navbar">
+            <form class="form-inline mr-auto">
+                <ul class="navbar-nav mr-3">
+                    <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i><fa-icon [icon]="['fas', 'bars']"></fa-icon></i></a></li>
+                    <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i><fa-icon [icon]="['fas', 'search']"></fa-icon></i></a></li>
+                </ul>
+                <div class="search-element">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+                    <button class="btn" type="submit"><i><fa-icon [icon]="['fas', 'search']"></fa-icon></i></button>
+               
+                  
+                </div>
+            </form>
+            <ul class="navbar-nav navbar-right">
+                <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i><fa-icon [icon]="['fas', 'envelope']"></fa-icon></i></a>
+                    <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                    <div class="dropdown-header">Messages
+                        <div class="float-right">
+                            <a href="#">Mark All As Read</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-list-content dropdown-list-message">
+                       
+                     
+                    </div>
+                    <div class="dropdown-footer text-center">
+                        <a href="#">View All <i><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></i></a>
+                    </div>
+                    </div>
+                </li>
+                <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i><fa-icon [icon]="['fas', 'bell']"></fa-icon></i></a>
+                    <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                    <div class="dropdown-header">Notifications
+                        <div class="float-right">
+                            <a href="#">Mark All As Read</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-list-content dropdown-list-icons">
+                     
+                    </div>
+                    <div class="dropdown-footer text-center">
+                        <a href="#">View All <i ><fa-icon [icon]="['fas', 'chevron-right']"></fa-icon></i></a>
+                    </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                    <img alt="image" src="assets/img/henry.jpg" class="rounded-circle mr-1">
+                    <div class="d-sm-none d-lg-inline-block">Hi, {{name}}</div></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="features-profile.html" class="dropdown-item has-icon"><i><fa-icon [icon]="['far', 'user']"></fa-icon></i> Profile</a>
+                        <a href="features-activities.html" class="dropdown-item has-icon"><i><fa-icon [icon]="['fas', 'bolt']"></fa-icon></i> Activities</a>
+                        <a href="features-settings.html" class="dropdown-item has-icon"><i><fa-icon [icon]="['fas', 'cog']"></fa-icon></i> Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a style="cursor: pointer;" (click)="logout()" class="dropdown-item has-icon text-danger"><i><fa-icon [icon]="['fas', 'sign-out-alt']"></fa-icon></i> Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+  
+        <!-- Start main left sidebar menu -->
+        <div class="main-sidebar sidebar-style-3">
+            <aside id="sidebar-wrapper">
+                <div class="sidebar-brand">
+                    <a href="index-2.html">Muhindi Mweusi</a>
+                </div>
+               
+                <ul class="sidebar-menu">
+                    
+                    <li class="menu-header">Dashboard</li>
+                    <li><a class="nav-link" routerLink=""><i><fa-icon [icon]="['fas', 'home']" ></fa-icon></i> <span>Home</span></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i ><fa-icon [icon]="['fas', 'shopping-basket']"></fa-icon></i><span>Products</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" routerLink="/products">View Products</a></li>
+                            <li><a class="nav-link" style="cursor: pointer;" (click)="openProductDetails()">Add Products</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i ><fa-icon [icon]="['fas', 'list-alt']"></fa-icon></i><span>Categories</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" routerLink="/department">Department</a></li>
+                            <li><a class="nav-link" routerLink="/category">Category</a></li>
+                            <li><a class="nav-link" routerLink="/subcategory">Sub Category</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="nav-link" routerLink="/orders"><i ><fa-icon [icon]="['fas', 'clipboard-list']" ></fa-icon></i> <span>Orders</span></a></li>
+                    <li><a class="nav-link" routerLink="/analytics"><i ><fa-icon [icon]="['fas', 'chart-bar']"></fa-icon></i> <span>Analytics</span></a></li>
+                    <li><a class="nav-link" routerLink="/customers"><i ><fa-icon [icon]="['fas', 'users']" ></fa-icon></i> <span>Customers</span></a></li>
+                    <li><a class="nav-link" routerLink="/shipping"><i ><fa-icon [icon]="['fas', 'ship']" ></fa-icon></i> <span>Shipping</span></a></li>
+                    <li><a class="nav-link" routerLink="/ads"><i ><fa-icon [icon]="['fas', 'ad']" ></fa-icon></i> <span>Ads Management</span></a></li>
+                </ul>
+          
+            </aside>
+        </div>
+  
+        <!-- Start app main Content -->
+        <div class="main-content">
+            <router-outlet></router-outlet>
+            
+        </div>
+  
+        <!-- Start app Footer part -->
+        <footer class="main-footer">
+            <div class="footer-left">
+                 <div class="bullet"></div>  <a href="muhindimweusi.co.ke">Muhindi Mweusi</a>
+            </div>
+            <div class="footer-right">
+            
+            </div>
+        </footer>
+    </div>
+  </div>
+  
+  

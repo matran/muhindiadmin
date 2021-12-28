@@ -1,0 +1,51 @@
+<section class="section">
+
+    <div class="section-header">
+      <div class="section-header-breadcrumb">
+          <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+          <div class="breadcrumb-item">customers</div>
+      </div>
+  </div>
+  <div class="section-body">
+  <div class="card-body">
+   <div>
+  <table datatable [dtOptions]="dtOptions" class="row-bcustomer hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Registered On</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="customers?.length != 0">
+      <tr *ngFor="let customer of customers">
+        <td>{{ customer.id}}</td>
+        <td><span>{{ customer.firstname}}</span>&nbsp;<span>{{customer.lastname}}</span></td>
+        <td>{{ customer.email}}</td>
+        <td>{{ customer.phone}}</td>
+        <td>{{ customer.registered_on}}</td>
+        <td><div class="dropstart"><button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton1"><i class="fas fa-ellipsis-v" aria-hidden="true"></i></button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <a style="cursor: pointer;" class="dropdown-item has-icon" type="button" (click)="openDeleteModal(customer)" ><i class="fa fa-trash"></i>Delete</a>
+            <a style="cursor: pointer;" class="dropdown-item has-icon" type="button"><i class="far fa-edit"></i> Edit</a>
+          </div>
+        </div>
+        </td>
+      </tr>
+      <img *ngIf="IsWait" class="loading-p" src="assets/img/loading.svg"/>
+    </tbody>
+    <tbody *ngIf="customers?.length == 0">
+      <tr>
+        <td colspan="3" class="no-data-available">No data available</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+  </section>
+  
+

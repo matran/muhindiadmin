@@ -1,0 +1,51 @@
+<section class="section">
+
+    <div class="section-header">
+      <div class="section-header-breadcrumb">
+          <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+          <div class="breadcrumb-item">Ads</div>
+      </div>
+  </div>
+  <div class="section-body">
+  <div class="card-body">
+    <div style="float: right; margin-bottom: 20px;"><button (click)="openAdvertModal('Add',{})"  class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>Add New</button></div>
+   <div>
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Photo</th>
+        <th>Title</th>
+        <th>Link</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngIf="adverts?.length != 0">
+      <tr *ngFor="let advert of adverts">
+        <td>{{ advert.id}}</td>
+        <td><img alt="image" [src]=advert.image width="80" onerror="if (this.src != 'assets/img/photo.svg') this.src = 'assets/img/photo.svg';"/></td>
+        <td>{{ advert.title}}</td>
+        <td>{{ advert.link}}</td>
+        <td><div class="dropstart"><button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton1"><i class="fas fa-ellipsis-v" aria-hidden="true"></i></button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <a style="cursor: pointer;" class="dropdown-item has-icon" type="button" (click)="openDeleteModal(advert)"  ><i class="fa fa-trash"></i>Delete</a>
+          <a (click)="openAdvertModal('Update',advert)" style="cursor: pointer;" class="dropdown-item has-icon" type="button"><i class="far fa-edit"></i> Edit</a>
+        </div>
+      </div>
+      </td>
+      </tr>
+      <img *ngIf="IsWait" class="loading-p" src="assets/img/loading.svg"/>
+    </tbody>
+    <tbody *ngIf="adverts?.length == 0">
+      <tr>
+        <td colspan="3" class="no-data-available">No data available</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+  </section>
+  
+
+

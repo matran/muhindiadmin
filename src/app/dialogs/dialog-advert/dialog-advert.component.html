@@ -1,0 +1,57 @@
+
+                <div class="card card-primary">            
+                    <div class="card-body">
+                        <form [formGroup]="advertForm" (ngSubmit)="doAction()">
+                          <div class="form-group">
+                            <label for="name">Appearance Section</label>
+                            <select class="form-control"  formControlName="section">
+                                <option disabled selected>--Select--</option>
+                                <option value="frontleft">frontleft</option>
+                                <option value="frontright">frontright</option>
+                            </select>
+                            <div *ngIf="getControl.section.touched && getControl.section.invalid">
+                            <div class="invalid-feedback" *ngIf="hasError('section', 'required')">Required</div>
+                              </div>
+                           </div>
+
+                            <div class="form-group">
+                                <label for="name">Title</label>
+                                <input type="text" class="form-control" formControlName="title"/>
+                                <div *ngIf="getControl.title.touched && getControl.title.invalid">
+                                <div class="invalid-feedback" *ngIf="hasError('title', 'required')">Required</div>
+                                  </div>
+                               </div>
+
+                                <div class="form-group">
+                                    <label for="name">Notes</label>
+                                    <ckeditor [editor]="Editor"  formControlName="notes"></ckeditor>
+                                    <div *ngIf="getControl.notes.touched && getControl.notes.invalid">
+                                    <div  class="invalid-feedback" *ngIf="hasError('notes', 'required')" >Required</div>
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="name">Photo</label>
+                                    <input type="file" class="form-control" formControlName="photo" (change)="selectFile($event)"/>
+                                    <div *ngIf="getControl.photo.touched && getControl.photo.invalid">
+                                    <div  class="invalid-feedback" *ngIf="hasError('photo', 'required')" >Required</div>
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="name">Link</label>
+                                    <input type="text" class="form-control" formControlName="link"/>
+                                    <div *ngIf="getControl.link.touched && getControl.link.invalid">
+                                    <div class="invalid-feedback" *ngIf="hasError('link', 'required')">Required</div>
+                                      </div>
+                                   </div>
+                         
+                         
+                            <div class="form-group text-center">
+                                <img *ngIf="IsWait" style="height: 50px;" class="text-center"  src="assets/img/loading.svg"/>
+                                <button  type="submit"  [disabled]="!advertForm.valid" class="btn btn-primary btn-lg btn-block">{{action}}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+

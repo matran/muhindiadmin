@@ -1,0 +1,28 @@
+
+                <div class="card card-primary">            
+                    <div class="card-body">
+                        <form [formGroup]="locationForm" (ngSubmit)="doAction()">
+
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <input  type="text" class="form-control" formControlName="location">
+                                <div *ngIf="getControl.location.touched && getControl.location.invalid">
+                                <div class="invalid-feedback" *ngIf="hasError('location', 'required')">Required</div>
+                                  </div>
+                               </div>
+
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input  type="number" class="form-control" formControlName="price">
+                                    <div *ngIf="getControl.price.touched && getControl.price.invalid">
+                                    <div  class="invalid-feedback" *ngIf="hasError('price', 'required')" >Required</div>
+                                  </div>
+                                </div>
+                         
+                            <div class="form-group text-center">
+                                <img *ngIf="IsWait" style="height: 50px;" class="text-center"  src="assets/img/loading.svg"/>
+                                <button  type="submit"  [disabled]="!locationForm.valid" class="btn btn-primary btn-lg btn-block">{{action}}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>

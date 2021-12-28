@@ -1,0 +1,22 @@
+.photos-btn {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+.btn-delete {
+    margin-right: 9px;
+}
+.img-products {
+    width: 150px !important;
+    height: 150px !important;
+    object-fit: contain;
+    background-color: aliceblue !important;
+    opacity: 1 !important;
+
+}
+.img-icon {
+    color: white;
+}
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 600px;
+}

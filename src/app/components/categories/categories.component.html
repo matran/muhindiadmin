@@ -1,0 +1,49 @@
+<section class="section">
+
+    <div class="section-header">
+      <div class="section-header-breadcrumb">
+          <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+          <div class="breadcrumb-item">category</div>
+      </div>
+  </div>
+  <div class="section-body">
+  <div class="card-body">
+    <div style="float: right; margin-bottom: 20px;"><button (click)="openCategoryModal('Add',{})"  class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>Add New</button></div>
+   <div>
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Department</th>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngIf="categories?.length != 0">
+      <tr *ngFor="let category of categories">
+        <td>{{ category.id}}</td>
+        <td>{{ category.parent}}</td>
+        <td>{{ category.name}}</td>
+        <td><div class="dropstart"><button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton1"><i class="fas fa-ellipsis-v" aria-hidden="true"></i></button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <a style="cursor: pointer;" class="dropdown-item has-icon" type="button" (click)="openDeleteModal(category)"  ><i class="fa fa-trash"></i>Delete</a>
+          <a (click)="openCategoryModal('Update',category)" style="cursor: pointer;" class="dropdown-item has-icon" type="button"><i class="far fa-edit"></i> Edit</a>
+        </div>
+      </div>
+      </td>
+      </tr>
+      <img *ngIf="IsWait" class="loading-p" src="assets/img/loading.svg"/>
+    </tbody>
+    <tbody *ngIf="categories?.length == 0">
+      <tr>
+        <td colspan="3" class="no-data-available">No data available</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+  </section>
+  
+
+

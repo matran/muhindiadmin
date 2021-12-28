@@ -1,0 +1,6 @@
+::ng-deep body {
+    background-color: #563d7c;
+}
+::ng-deep .invalid-feedback {
+    display: inline;
+}

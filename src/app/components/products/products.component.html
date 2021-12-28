@@ -1,0 +1,58 @@
+<section class="section">
+
+  <div class="section-header">
+    <div class="section-header-breadcrumb">
+        <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+        <div class="breadcrumb-item">Products</div>
+    </div>
+</div>
+<div class="section-body">
+<div class="card-body">
+ <div>
+<table datatable [dtOptions]="dtOptions" class="row-border hover">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Sub Category</th>
+      <th>Category</th>
+      <th>Department</th>
+      <th>Price</th>
+      <th>Promo Price</th>
+      <th>Quantity</th>
+      <th>Featured</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngIf="products?.length != 0">
+    <tr *ngFor="let product of products">
+      <td><img alt="image" [src]=product.image width="80" onerror="if (this.src != 'assets/img/photo.svg') this.src = 'assets/img/photo.svg';"></td>
+      <td>{{ product.name}}</td>
+      <td>{{ product.subcategory}}</td>
+      <td>{{ product.category}}</td>
+      <td>{{ product.department}}</td>
+      <td>{{ product.price}}</td>
+      <td>{{ product.offerprice}}</td>
+      <td>{{ product.quantity}}</td>
+      <td (click)="setFeatured(product)" style="cursor: pointer;"><i class="far fa-star" *ngIf="product.featured==false" ></i> <i class="fas fa-star"  *ngIf="product.featured==true" ></i></td>
+      <td><div class="dropstart"><button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton1"><i class="fas fa-ellipsis-v" aria-hidden="true"></i></button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <a style="cursor: pointer;" class="dropdown-item has-icon" type="button"  (click)="openModal(product)"><i class="fa fa-trash"></i>Delete</a>
+        <a style="cursor: pointer;" class="dropdown-item has-icon" type="button" (click)="openProductDetails('Update',product)"><i class="far fa-edit"></i> Edit</a>
+      
+      </div>
+    </div>
+    </td>
+    </tr>
+    <img *ngIf="IsWait" class="loading-p" src="assets/img/loading.svg"/>
+  </tbody>
+  <tbody *ngIf="products?.length == 0">
+    <tr>
+      <td colspan="3" class="no-data-available">No data available</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>

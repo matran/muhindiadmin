@@ -1,0 +1,156 @@
+<section class="section">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-10 offset-lg-1 col-xl-10 offset-xl-1">
+           
+                <div class="card card-primary">
+                   
+                    <div class="card-body">
+                        <p>Choose only one either deparment ,category or subcategory. if a product does not have category and subcategory choose only department.</p>
+                        <form [formGroup]="productForm" (ngSubmit)="doAction()">
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label for="name">Name</label>
+                                    <input  type="text" class="form-control" formControlName="name">
+                                    <div *ngIf="getControl.name.touched && getControl.name.invalid">
+                                    <div  class="invalid-feedback" *ngIf="hasError('name', 'required')" >Required</div>
+                                  </div>
+                                </div>
+                                <div class="form-group col-6" *ngIf="showSubCategory">
+                                    <label>Sub Category</label>
+                                    <select class="form-control"  formControlName="subcategory" (change)="categoryChange('subcategory')">
+                                            <option disabled selected>--Select--</option>
+                                            <option *ngFor="let category of subcategories; let i = index" [value]="subcategories[i].name">{{subcategories[i].name}}</option>
+                                     </select>
+                                     <div *ngIf="getControl.subcategory.touched && getControl.subcategory.invalid">
+                                     <div class="invalid-feedback" *ngIf="hasError('subcategory', 'required')">Required</div>
+                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-6" *ngIf="showCategory">
+                                    <label>Category</label>
+                                    <select class="form-control"  formControlName="category" (change)="categoryChange('category')">
+                                            <option disabled selected>--Select--</option>
+                                            <option *ngFor="let category of categories; let i = index" [value]="categories[i].name">{{categories[i].name}}</option>
+                                     </select>
+                                     <div *ngIf="getControl.category.touched && getControl.category.invalid">
+                                     <div class="invalid-feedback" *ngIf="hasError('category', 'required')">Required</div>
+                                     </div>
+                                </div>
+                                <div class="form-group col-6" *ngIf="showDepartment">
+                                    <label>Department</label>
+                                    <select  class="form-control"  formControlName="department" (change)="categoryChange('department')">
+                                            <option disabled selected>--Select--</option>
+                                            <option *ngFor="let department of departments; let i = index" [value]="departments[i].name">{{departments[i].name}}</option>
+                                     </select>
+                                     <div *ngIf="getControl.department.touched && getControl.department.invalid">
+                                     <div class="invalid-feedback" *ngIf="hasError('department', 'required')">Required</div>
+                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sku">Sku</label>
+                                <input type="text" class="form-control" formControlName="sku"/>
+                                <div *ngIf="getControl.sku.touched && getControl.sku.invalid">
+                                <div class="invalid-feedback" *ngIf="hasError('sku', 'required')">Required</div></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Short Description</label>
+                                <textarea type="text" class="form-control" formControlName="description"></textarea>
+                                <div *ngIf="getControl.description.touched && getControl.description.invalid">
+                                <div class="invalid-feedback" *ngIf="hasError('description', 'required')">Required</div></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="details">Product Details</label>
+                                <ckeditor  [config]="editorConfig"  [editor]="Editor" (ready)="onReady($event)" formControlName="details"></ckeditor>
+                                <div *ngIf="getControl.details.touched && getControl.details.invalid">
+                                <div class="invalid-feedback" *ngIf="hasError('details', 'required')">Required</div></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label for="price" class="d-block">Price</label>
+                                    <input type="number" class="form-control" formControlName="price">
+                                    <div *ngIf="getControl.price.touched && getControl.price.invalid">
+                                    <div class="invalid-feedback" *ngIf="hasError('price', 'required')">Required</div></div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="quantity" class="d-block">Promo Price(Optional)</label>
+                                    <input type="number" class="form-control" formControlName="promoprice">
+                                    <div *ngIf="getControl.promoprice.touched && getControl.promoprice.invalid">
+                                    <div class="invalid-feedback" *ngIf="hasError('promoprice', 'required')">Required</div></div>
+                                </div>
+                              </div>
+
+
+                            <div class="row">
+                            <div class="form-group col-6">
+                                <label for="photo">Product Photo(Optional)</label>
+                                <input id="photo"  type="file" class="form-control"  (change)="selectFile($event)"/>
+                                <div class="invalid-feedback"> </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="quantity" class="d-block">Quantity</label>
+                                <input type="number" class="form-control" formControlName="quantity">
+                                <div *ngIf="getControl.quantity.touched && getControl.quantity.invalid">
+                                <div class="invalid-feedback" *ngIf="hasError('quantity', 'required')">Required</div></div>
+                            </div>
+                            </div>
+
+                            <div class="progress form-group" *ngIf="progress > 0">
+                                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="progress" aria-valuenow="{progress}" aria-valuemin="0" aria-valuemax="100">
+                                {{progress}}%
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="button" [disabled]="!selectedFiles || !productForm.valid" (click)="selectMethodForSaving()" >
+                                  {{uploadbtntext}}
+                                </button>
+                              </div>
+                              
+                           
+                      
+                            <div class="row" >
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label class="form-label">Product Photo(s)</label>
+                                            <div class="row gutters-sm">
+                                                <div class="col-6 col-sm-4" *ngFor="let file of fileInfos | async">
+                                                    <label class="imagecheck mb-4">
+                                                    <figure class="imagecheck-figure img-products">
+                                                        <img [src]="file.image"  class="imagecheck-image img-products" >
+                                                       
+                                                    </figure>
+                                                    <div class="photos-btn">
+                                                     <a data-toggle="tooltip" data-placement="bottom" title="Delete Photo"  (click)="deleteProductImage(file)" class="btn btn-icon btn-danger btn-delete"><i class="fas fa-trash img-icon"></i></a>
+                                                     <a  class="btn btn-icon btn-primary"><i class="fas fa-edit img-icon"  (click)="openPhotoModal(file)" ></i></a>
+                                                    </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                     
+                           
+                            <div class="form-group text-center">
+                                <img *ngIf="IsWait" style="height: 50px;" class="text-center"  src="assets/img/loading.svg"/>
+                                <button  *ngIf="showAddButton" type="submit"  [disabled]="!productForm.valid || oneSelected==false" class="btn btn-primary btn-lg btn-block">{{action}}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</section>

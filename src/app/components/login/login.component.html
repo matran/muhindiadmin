@@ -1,0 +1,56 @@
+<div id="app" style="background-color: #563d7c;">
+    <section class="section">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+                    <div class="login-brand">
+                        
+                    </div>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            
+                        </div>
+                        <div class="card-body">
+                            <form [formGroup]="loginForm" (ngSubmit)="doAction()" >
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input id="email" type="email" class="form-control" tabindex="1" formControlName="email" required>
+                                    <div *ngIf="getControl.email.touched && getControl.email.invalid">
+                                        <div class="invalid-feedback" *ngIf="hasError('email', 'required')">Email is Required</div></div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="d-block">
+                                        <label for="password" class="control-label">Password</label>
+                                    </div>
+                                    <input id="password" type="password" class="form-control"  tabindex="2" formControlName="password"  required>
+                                    <div *ngIf="getControl.password.touched && getControl.password.invalid">
+                                        <div class="invalid-feedback" *ngIf="hasError('password', 'required')">Password is Required</div></div>
+                                </div>
+                                <div class="form-group">
+                                  <label for="role">Role</label>
+                                    <select  id="role" type="select" class="form-control" name="role" tabindex="1" formControlName="role" required >
+                                    <option disabled selected>-- Select role --</option>
+                                     <option value="Admin">Admin</option>
+                                     <option value="User">User</option>
+                                    </select>
+                                    <div *ngIf="getControl.role.touched && getControl.role.invalid">
+                                        <div class="invalid-feedback" *ngIf="hasError('role', 'required')">Role is Required</div></div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" [disabled]="!loginForm.valid || disabled" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                                    Login
+                                    </button>
+                                </div>
+                            </form>
+                    
+                        </div>
+                    </div>
+                  
+                    <div class="simple-footer">
+                        Copyright &copy; Muhindimweusi 2021
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

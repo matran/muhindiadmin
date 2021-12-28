@@ -1,0 +1,9 @@
+.footer-cart {
+    display: flex; 
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-evenly;
+}
+.footer-cart li {
+    font-weight: 600;
+}

@@ -1,0 +1,95 @@
+<section class="section">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="card card-statistic-2">
+            <div class="card-stats">
+            <div class="card-stats-title">Order Statistics - 
+                <div class="dropdown d-inline">
+                <a class="font-weight-600 dropdown-toggle" data-toggle="dropdown" href="#" id="orders-month">{{currentmonth}}</a>
+                <ul class="dropdown-menu dropdown-menu-sm">
+                    <li class="dropdown-title">Select Month</li>
+                    <li (click)="setValue(1)"><a href="#" class="dropdown-item" [ngClass]="{'active': month === 1 }">January</a></li>
+                    <li (click)="setValue(2)"><a href="#" class="dropdown-item" [ngClass]="{'active': month === 2 }">February</a></li>
+                    <li (click)="setValue(3)"><a href="#" class="dropdown-item" [ngClass]="{'active': month === 3 }">March</a></li>
+                    <li (click)="setValue(4)"><a href="#" class="dropdown-item" [ngClass]="{'active': month === 4 }">April</a></li>
+                    <li (click)="setValue(5)"><a href="#" class="dropdown-item" [ngClass]="{'active': month === 5 }">May</a></li>
+                    <li (click)="setValue(6)"><a href="#" class="dropdown-item" [ngClass]="{'active': month === 6 }">June</a></li>
+                    <li (click)="setValue(7)"><a href="#" class="dropdown-item" [ngClass]="{'active': month === 7 }">July</a></li>
+                    <li (click)="setValue(8)"><a href="#" class="dropdown-item" [ngClass]="{'active': month === 8 }">August</a></li>
+                    <li (click)="setValue(9)"><a href="#" class="dropdown-item" [ngClass]="{'active': month === 9 }">September</a></li>
+                    <li (click)="setValue(10)"><a href="#" class="dropdown-item" [ngClass]="{'active': month === 10 }">October</a></li>
+                    <li (click)="setValue(11)"><a href="#" class="dropdown-item" [ngClass]="{'active': month === 11 }">November</a></li>
+                    <li (click)="setValue(12)"><a href="#" class="dropdown-item" [ngClass]="{'active': month === 12 }">December</a></li>
+                </ul>
+                </div>
+            </div>
+            <div class="card-stats-items">
+                <div class="card-stats-item">
+                    <div class="card-stats-item-count">{{processingcount}}</div>
+                    <div class="card-stats-item-label">Processing</div>
+                </div>
+               
+                <div class="card-stats-item">
+                    <div class="card-stats-item-count">{{completedcount}}</div>
+                    <div class="card-stats-item-label">Completed</div>
+                </div>
+            </div>
+            </div>
+            <div class="card-icon shadow-primary bg-primary">
+           <i class="fas fa-archive"></i>
+         
+            </div>
+            <div class="card-wrap">
+            <div class="card-header">
+                <h4>Total Orders</h4>
+            </div>
+            <div class="card-body">
+                {{totalorders}}
+
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="card card-statistic-2">
+            <div class="card-chart">
+            <canvas id="balance-chart" height="80"></canvas>
+            </div>
+            <div class="card-icon shadow-primary bg-primary">
+              <i class="fas fa-dollar-sign"></i>
+        
+            </div>
+            <div class="card-wrap">
+            <div class="card-header">
+                <h4>Balance</h4>
+            </div>
+            <div class="card-body">
+                {{salesbalance}}
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="card card-statistic-2">
+            <div class="card-chart">
+            <canvas id="sales-chart" height="80"></canvas>
+            </div>
+            <div class="card-icon shadow-primary bg-primary">
+          
+            <i class="fas fa-shopping-bag"></i>
+         
+            </div>
+            <div class="card-wrap">
+            <div class="card-header">
+                <h4>Sales</h4>
+            </div>
+            <div class="card-body">
+                {{salescount}}
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+   
+  
+</section>

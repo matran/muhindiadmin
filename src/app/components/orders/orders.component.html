@@ -1,0 +1,66 @@
+<section class="section">
+
+    <div class="section-header">
+      <div class="section-header-breadcrumb">
+          <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+          <div class="breadcrumb-item">Orders</div>
+      </div>
+  </div>
+  <div class="section-body">
+  <div class="card-body">
+   <div>
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <th>Order Id</th>
+        <th>Customer</th>
+        <th>Ship To</th>
+        <th>Total</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Payment Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngIf="orders?.length != 0">
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id}}</td>
+        <td>{{ order.customer}}</td>
+        <td>{{ order.shipto}}</td>
+        <td>{{ order.amount}}</td>
+        <td>{{ order.date}}</td>
+        <td><select #mySelect [(value)]="order.status" (change)="changeStatus(mySelect.value,order.id)" class="form-select">  
+          <option value="placed">Placed</option>
+          <option value="shipping">Shipping</option>
+          <option value="shipped">Shipped</option>
+          <option value="cancelled">Cancelled</option>
+          <option value="pending">Pending</option>
+          <option value="completed">Completed</option>
+        </select></td>
+        <td>
+          <div *ngIf="order.paid==false" class="badge badge-danger">Not Paid</div>
+          <div *ngIf="order.paid==true" class="badge badge-success">Paid</div>
+        </td>
+        <td><div class="dropstart"><button type="button" class="btn btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton1"><i class="fas fa-ellipsis-v" aria-hidden="true"></i></button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <a  style="cursor: pointer;" class="dropdown-item has-icon" type="button" (click)="openInvoice(order)"><i class="fas fa-file-invoice-dollar"></i> Invoice</a>
+            <a  style="cursor: pointer;" class="dropdown-item has-icon" type="button" (click)="viewCart(order)"><i class="fas fa-shopping-cart"></i> Cart</a>
+            <a style="cursor: pointer;" class="dropdown-item has-icon" type="button" (click)="openDeleteModal(order)" ><i class="fa fa-trash"></i>Delete</a>
+            
+          </div>
+        </div>
+        </td>
+      </tr>
+      <img *ngIf="IsWait" class="loading-p" src="assets/img/loading.svg"/>
+    </tbody>
+    <tbody *ngIf="orders?.length == 0">
+      <tr>
+        <td colspan="3" class="no-data-available">No data available</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+  </section>
+  

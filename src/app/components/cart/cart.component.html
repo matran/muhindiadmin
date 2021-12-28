@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Cart</h4>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-striped v_center">
+                        <tr>
+                            <th>ID</th>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Sub Total</th>
+                        </tr>
+                        <tr *ngFor="let cart of data" >
+                            <td>{{ cart.code}}</td>
+                            <td><img alt="image" [src]=cart.image width="80" onerror="if (this.src != 'assets/img/photo.svg') this.src = 'assets/img/photo.svg';"></td>
+                            <td >{{ cart.name}}</td>
+                            <td>x {{ cart.quantity}}</td>
+                            <td>{{ cart.price}}</td>
+                            <td>{{ cart.subtotal}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer text-right">
+                <nav class="d-inline-block">
+                  <ul class="footer-cart">
+                      <li>Quantity: &nbsp;</li>
+                      <li>{{totalquantity}} &nbsp;</li>
+                      <li>Total: &nbsp; </li>
+                      <li>KSh:&nbsp;{{ total}}</li>
+                  </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

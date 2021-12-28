@@ -1,0 +1,31 @@
+
+                <div class="card card-primary">            
+                    <div class="card-body">
+                        <form [formGroup]="subcategoryForm" (ngSubmit)="doAction()">
+
+                            <div class="form-group">
+                                <label for="name">Category</label>
+                                <select class="form-control"  formControlName="category">
+                                    <option disabled selected>--Select--</option>
+                                    <option *ngFor="let category of categories; let i = index" [value]="categories[i].name">{{categories[i].name}}</option>
+                                </select>
+                                <div *ngIf="getControl.category.touched && getControl.category.invalid">
+                                <div class="invalid-feedback" *ngIf="hasError('category', 'required')">Required</div>
+                                  </div>
+                               </div>
+
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input  type="text" class="form-control" formControlName="name">
+                                    <div *ngIf="getControl.name.touched && getControl.name.invalid">
+                                    <div  class="invalid-feedback" *ngIf="hasError('name', 'required')" >Required</div>
+                                  </div>
+                                </div>
+                         
+                            <div class="form-group text-center">
+                                <img *ngIf="IsWait" style="height: 50px;" class="text-center"  src="assets/img/loading.svg"/>
+                                <button  type="submit"  [disabled]="!subcategoryForm.valid" class="btn btn-primary btn-lg btn-block">{{action}}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
